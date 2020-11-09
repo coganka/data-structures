@@ -51,6 +51,25 @@ class BST {
         }
         return false;
     }
+
+    // Searching Algorithms
+    bfs() {
+        let currentNode = this.root;
+        let list = [];
+        let queue = [];
+        queue.push(currentNode);
+        while (queue.length > 0) {
+            currentNode = queue.shift();
+            list.push(currentNode.value);
+            if (currentNode.left) {
+                queue.push(currentNode.left);
+            }
+            if (currentNode.right) {
+                queue.push(currentNode.right);
+            }
+        }
+        return list;
+    }
 }
 
 const myBST = new BST();
@@ -59,4 +78,5 @@ myBST.insert(5);
 myBST.insert(22);
 
 //console.log(myBST.lookup(5));
-console.log(myBST);
+//console.log(myBST);
+console.log(myBST.bfs());
